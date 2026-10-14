@@ -7,8 +7,8 @@ import React from 'react';
 import { Search } from 'lucide-react';
 
 interface NavbarProps {
-  activeView: 'syllabus' | 'algorithms' | 'case-studies' | 'assessments' | 'bookmarks';
-  onSelectView: (view: 'syllabus' | 'algorithms' | 'case-studies' | 'assessments' | 'bookmarks') => void;
+  activeView: 'syllabus' | 'mindmaps' | 'algorithms' | 'case-studies' | 'assessments' | 'bookmarks';
+  onSelectView: (view: 'syllabus' | 'mindmaps' | 'algorithms' | 'case-studies' | 'assessments' | 'bookmarks') => void;
   onOpenSearch: () => void;
   totalCompletedCount: number;
   totalQuestions: number;
@@ -43,6 +43,17 @@ export const Navbar: React.FC<NavbarProps> = ({
             Syllabus
           </button>
           <button
+            onClick={() => onSelectView('mindmaps')}
+            className={`transition-colors whitespace-nowrap shrink-0 cursor-pointer flex items-center gap-1.5 ${
+              activeView === 'mindmaps' ? 'text-indigo-600 font-semibold' : 'hover:text-slate-900'
+            }`}
+          >
+            <span>Mind Maps</span>
+            <span className="px-1.5 py-0.2 rounded-full text-[10px] font-bold bg-indigo-100 text-indigo-700">
+              5 Units
+            </span>
+          </button>
+          <button
             onClick={() => onSelectView('algorithms')}
             className={`transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
               activeView === 'algorithms' ? 'text-indigo-600 font-semibold' : 'hover:text-slate-900'
@@ -65,14 +76,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             }`}
           >
             Assessments
-          </button>
-          <button
-            onClick={() => onSelectView('bookmarks')}
-            className={`transition-colors whitespace-nowrap shrink-0 cursor-pointer ${
-              activeView === 'bookmarks' ? 'text-indigo-600 font-semibold' : 'hover:text-slate-900'
-            }`}
-          >
-            Saved Items
           </button>
         </nav>
 
